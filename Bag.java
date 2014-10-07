@@ -15,7 +15,7 @@ public class Bag {
 		while (true) {
 			try {
 				System.out
-						.println("Add(A), Delete(D), Find(F), Size(S), Min(m), Max(M), List(L), Quit(Q) >>");
+						.print("Add(A), Delete(D), Find(F), Size(S), Min(m), Max(M), List(L), Quit(Q) >> ");
 				x = scan.nextLine();
 				a = new String[x.split(" ").length];
 				a = x.split(" ");
@@ -72,8 +72,8 @@ public class Bag {
 			}
 		}
 		if (found) {
+			found2 = true;
 			for (int j = i; j < bagArray.length - 1; j++) {
-				found2 = true;
 				bagArray[j] = bagArray[j + 1];
 			}
 			System.out.println(number + " is deleted from the Bag.");
