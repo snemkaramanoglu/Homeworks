@@ -1,10 +1,7 @@
 package Projeler;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Toolkit;
-import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,8 +43,9 @@ public class Layouts extends JFrame {
 		getContentPane().add(panel1,BorderLayout.NORTH);
 		getContentPane().add(panel2,BorderLayout.SOUTH);
 		setSize(380, 260);
-
+	
 		setLocationRelativeTo(null);
+		this.setResizable(false);
 	}
 
 	public static void main(String[] args) {
