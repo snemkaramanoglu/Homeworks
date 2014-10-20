@@ -1,7 +1,8 @@
-//Furkan Özbay and Sinem Karamanoðlu are pair for this project
+//Furkan Ã–zbay and Sinem KaramanoÄŸlu are pair for this project
 
 #include<stdio.h>
 #include<conio.h>
+#include<stdlib.h>
 
 
 void yatayciz(int width, int numbers[], int k, int u, int j,char yildiz[],char eksi[], int max, char bosluk[]){
@@ -13,64 +14,49 @@ void yatayciz(int width, int numbers[], int k, int u, int j,char yildiz[],char e
        }
        strcat(eksi,"+");
 
-
        printf("%s\n",eksi);
 
-
-    for(k=0;k<9;k++){
+        for(k=0;k<9;k++){
         for(u=0;u<numbers[k];u++){
            strcat(yildiz,"*");
           }
+
            for(j=0;j<max-numbers[k];j++){
           strcat(bosluk," ");
             }
         for(j=1;j<width+1;j++){
-
             if(j!=(width/2)+1)printf("  |%s%s%c\n",yildiz,bosluk,'|');
             else printf("%2d|%s%s%c\n",numbers[k],yildiz,bosluk,'|');
-
-        }
+            }
             strcpy(yildiz,"");
             strcpy(bosluk,"");
             printf("%s\n",eksi);
-
-        }
+            }
     }
 
-
 main(){
-
-
   printf("Enter 9 numbers (all less than 50): ");
   int numbers[9];
-  int i, width, k,j,u,max,temp;
+  int  width, k,j,u,max;
   char yildiz[50]={0}, v1[8]="   ",v2[8]="   ",v3[8]="   ",v4[8]="   ",v5[8]="   ",v6[8]="   ",v7[8]="   ",
   v8[8]="   ",v9[8]="   ", v10[8]="   ",eksi[50]={0}, bosluk[50]={0};
 
-  for(i=0;i<9;i++){
-    scanf("%d",&numbers[i]);
+    for(k=0;k<9;k++){
+    scanf("%d",&numbers[k]);
   }
-  {
 
-      int k;
-  }
   max=numbers[0];
-  for(i=1;i<9;i++){
-        if(numbers[i]>max) max=numbers[i];
+  for(k=1;k<9;k++){
+        if(numbers[k]>max) max=numbers[k];
 
   }
   printf("Enter the width of the charts (1, 3, 5 or 7): ");
   scanf("%d",&width);
 
+    yatayciz(width, numbers, k, u , j, yildiz,eksi,max,bosluk);
 
-  yatayciz(width, numbers, k, u , j, yildiz,eksi,max,bosluk);
-
-
-
-printf("      Vertical Chart\n");
-
-
-   switch(width){
+    printf("      Vertical Chart\n");
+    switch(width){
    case 1:
                 strcpy(v1," ");
                 strcpy(v2," ");
@@ -99,9 +85,50 @@ printf("      Vertical Chart\n");
 
            }
             printf("+-+-+-+-+-+-+-+-+-+\n");
-            for(i=0;i<9;i++){
-                 printf("%2d",numbers[i]);
-            }
+                   for(j=0;j<9;j++){
+
+              if(j==0) {
+                if(numbers[j]>9){
+                printf("%2d",numbers[j]-numbers[j]/10);
+
+                        }
+
+                else printf("%2d",numbers[j]);
+              }
+
+              else {
+                  if(numbers[j]>9 ){
+                    printf("%2d",numbers[j]/10);
+                    }
+
+                    else printf("%2d",numbers[j]);
+              }
+                }
+
+
+		printf("\n");
+
+		for(j=0;j<9;j++){
+          if(j==0) {
+                if(numbers[j]>9){
+                printf("%2d",numbers[j]/10-numbers[j]);
+
+                        }
+
+                else printf("%2s"," ");
+              }
+
+              else {
+                  if(numbers[j]>9 && numbers[j]%10==0){
+                    printf("%2d",0);
+                    }
+                    else if(numbers[j]>9 && numbers[j]%10!=0){
+                        printf("%2d",numbers[j]%10);
+                    }
+                    else printf("%2s"," ");
+              }
+		}
+
             break;
 
 
@@ -124,12 +151,52 @@ printf("      Vertical Chart\n");
            }
             printf("+---+---+---+---+---+---+---+---+---+\n");
 
-            for(j=0;j<9;j++){
-                 if(j==0)printf("%3d",numbers[j]);
-                 else printf("%4d",numbers[j]);
-            }
+                  for(j=0;j<9;j++){
+
+              if(j==0) {
+                if(numbers[j]>9){
+                printf("%3d",numbers[j]-numbers[j]/10);
+
+                        }
+
+                else printf("%3d",numbers[j]);
+              }
+
+              else {
+                  if(numbers[j]>9 ){
+                    printf("%4d",numbers[j]/10);
+                    }
+
+                    else printf("%4d",numbers[j]);
+              }
+                }
+
+
+		printf("\n");
+
+		for(j=0;j<9;j++){
+          if(j==0) {
+                if(numbers[j]>9){
+                printf("%3d",numbers[j]/10-numbers[j]);
+
+                        }
+
+                else printf("%3s"," ");
+              }
+
+              else {
+                  if(numbers[j]>9 && numbers[j]%10==0){
+                    printf("%4d",0);
+                    }
+                    else if(numbers[j]>9 && numbers[j]%10!=0){
+                        printf("%4d",numbers[j]%10);
+                    }
+                    else printf("%4s"," ");
+              }
+		}
+
             break;
-            break;
+
 
             case 5:
                 printf("+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
@@ -161,11 +228,49 @@ printf("      Vertical Chart\n");
            }
             printf("+-----+-----+-----+-----+-----+-----+-----+-----+-----+\n");
 
-             for(j=0;j<9;j++){
-              if(j==0)  printf("%4d",numbers[j]);
-              else printf("%6d",numbers[j]);
+                      for(j=0;j<9;j++){
 
+              if(j==0) {
+                if(numbers[j]>9){
+                printf("%4d",numbers[j]-numbers[j]/10);
+
+                        }
+
+                else printf("%4d",numbers[j]);
+              }
+
+              else {
+                  if(numbers[j]>9 ){
+                    printf("%6d",numbers[j]/10);
+                    }
+
+                    else printf("%6d",numbers[j]);
+              }
                 }
+
+
+		printf("\n");
+
+		for(j=0;j<9;j++){
+          if(j==0) {
+                if(numbers[j]>9){
+                printf("%4d",numbers[j]/10-numbers[j]);
+
+                        }
+
+                else printf("%4s"," ");
+              }
+
+              else {
+                  if(numbers[j]>9 && numbers[j]%10==0){
+                    printf("%6d",0);
+                    }
+                    else if(numbers[j]>9 && numbers[j]%10!=0){
+                        printf("%6d",numbers[j]%10);
+                    }
+                    else printf("%6s"," ");
+              }
+		}
             break;
 
                 case 7:
@@ -182,8 +287,6 @@ printf("      Vertical Chart\n");
                 strcpy(v10,"      ");
 
            for(j=max;j>0;j--){
-
-
 
                 if(numbers[0]==j) strcpy(v1,"*******");
                 if(numbers[1]==j) strcpy(v2,"*******");
@@ -202,13 +305,50 @@ printf("      Vertical Chart\n");
             printf("+-------+-------+-------+-------+-------+-------+-------+-------+-------+\n");
 
           for(j=0;j<9;j++){
-              if(j==0)  printf("%5d",numbers[j]);
-              else printf("%8d",numbers[j]);
 
+              if(j==0) {
+                if(numbers[j]>9){
+                printf("%5d",numbers[j]-numbers[j]/10);
+
+                        }
+
+                else printf("%5d",numbers[j]);
+              }
+
+              else {
+                  if(numbers[j]>9 ){
+                    printf("%8d",numbers[j]/10);
+                    }
+
+                    else printf("%8d",numbers[j]);
+              }
                 }
 
-            }
-        }
+
+		printf("\n");
+
+		for(j=0;j<9;j++){
+          if(j==0) {
+                if(numbers[j]>9){
+                printf("%5d",numbers[j]/10-numbers[j]);
+                }
+                else printf("%5s"," ");
+              }
+
+              else {
+                  if(numbers[j]>9 && numbers[j]%10==0){
+                    printf("%8d",0);
+                    }
+                    else if(numbers[j]>9 && numbers[j]%10!=0){
+                        printf("%8d",numbers[j]%10);
+                    }
+                    else printf("%8s"," ");
+              }
+	     	}
+		  }
+		}
+
+
 
 
 
