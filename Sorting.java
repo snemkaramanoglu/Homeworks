@@ -7,8 +7,9 @@ public class Sorting {
 	public static void main(String args[]) {
 		Scanner scan = new Scanner(System.in);
 		System.out.print("Number of elements: ");
-		int[] dizi = new int[scan.nextInt()];
-		System.out.print("Enter 4 elements: ");
+		int x = scan.nextInt();
+		int[] dizi = new int[x];
+		System.out.print("Enter " + x + " elements: ");
 		for (int i = 0; i < dizi.length; i++) {
 			dizi[i] = scan.nextInt();
 		}
@@ -16,6 +17,7 @@ public class Sorting {
 		bubbleSort(dizi.clone());
 		selectionSort(dizi.clone());
 		insertionSort(dizi.clone());
+
 	}
 
 	private static void bubbleSort(int[] dizi) {
@@ -45,23 +47,22 @@ public class Sorting {
 
 	public static void selectionSort(int[] dizi) {
 		int yedek, minIndex, comparision = 0, swap = 0;
-		boolean isSwap = false;
 		for (int i = 0; i < dizi.length - 1; i++) {
 			minIndex = i;
 			for (int j = i + 1; j < dizi.length; j++) {
+				comparision++;
+
 				if (dizi[j] < dizi[minIndex]) {
 					minIndex = j;
-					comparision++;
-					isSwap = true;
-				} else
-					comparision++;
+				}
+
 			}
-			if (isSwap) {
-				yedek = dizi[i];
-				dizi[i] = dizi[minIndex];
-				dizi[minIndex] = yedek;
-				swap++;
-			}
+
+			yedek = dizi[i];
+			dizi[i] = dizi[minIndex];
+			dizi[minIndex] = yedek;
+			swap++;
+
 		}
 		System.out.print("Selection Sort: ");
 		for (int i = 0; i < dizi.length; i++) {
@@ -78,15 +79,14 @@ public class Sorting {
 		for (int i = 1; i < dizi.length; i++) {
 			j = i;
 			temp = dizi[i];
-			if (dizi[j - 1] > temp) {
-				comparision++;
-				while (j > 0 && dizi[j - 1] > temp) {
-					dizi[j] = dizi[j - 1];
-					j--;
-				}
-				dizi[j] = temp;
-			} else
-				comparision++;
+
+			comparision++;
+			while (j > 0 && dizi[j - 1] > temp) {
+				dizi[j] = dizi[j - 1];
+				j--;
+			}
+			dizi[j] = temp;
+
 		}
 		System.out.print("Insertion Sort: ");
 		for (int i = 0; i < dizi.length; i++) {
